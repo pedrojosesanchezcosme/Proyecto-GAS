@@ -58,3 +58,13 @@ function borrar(){
 }//Fin function: borrar
 
 
+function onOpen() {
+   var ui = SpreadsheetApp.getUi();
+  // Or DocumentApp or FormApp. -> Creamos el menu con submenu
+  ui.createMenu('Opciones avanzadas')
+      .addItem('Elegir ganador', 'elegir')
+      .addItem('Eliminar los concursantes', 'borrar')
+      .addToUi();
+}//Fin Function onOpen
+
+
