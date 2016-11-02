@@ -47,3 +47,14 @@ function elegir(){
   //Browser.msgBox("El nombre del ganador es: " + name);
 }//Fin Function elegir
 
+function borrar(){
+  var sps = SpreadsheetApp.openById("1oDnph6_Z2FD9CvXnSMZoBItgYnj-umW4Jjr4lRahfS0");
+  var sheet = sps.getSheets();
+  var datos = sheet[0].getDataRange().getValues();
+  
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var concursantes = ss.getSheetByName("concursantes");
+  concursantes.clear();
+}//Fin function: borrar
+
+
