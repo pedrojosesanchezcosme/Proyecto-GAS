@@ -21,6 +21,29 @@ function emailOnFormSubmit (e) {
   
   //Comando para mandar el correo:
   MailApp.sendEmail(email, asunto, cuerpo);
-
 }
+ 
+
+function elegir(){
+  var sps = SpreadsheetApp.openById("1oDnph6_Z2FD9CvXnSMZoBItgYnj-umW4Jjr4lRahfS0");
+  var sheet = sps.getSheets();
+  var datos = sheet[0].getDataRange().getValues();
   
+  //Con esto sabemos cuantos participantes hay.
+  var ultimafila = sheet[0].getLastRow();
+  var total = ultimafila - 1;
+  
+  Logger.log("El total de inserts es: "+total);
+  
+  // Aqui se define la fila del ganador.
+  var winner = Math.floor(Math.random() * total) + 1;
+  
+  Logger.log("El numero del ganador es: "+ winner);
+  
+  var name = sheet[0].getRange(winner, 2).getValue();
+    
+  //Mostramos el ganador   
+  sheet[0].getRange(2, 8).setValue(name);
+  //Browser.msgBox("El nombre del ganador es: " + name);
+}//Fin Function elegir
+
