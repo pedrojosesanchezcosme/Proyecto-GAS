@@ -52,10 +52,36 @@ function borrar(){
   var sheet = sps.getSheets();
   var datos = sheet[0].getDataRange().getValues();
   
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var concursantes = ss.getSheetByName("concursantes");
-  concursantes.clear();
+  var ultimafila = sheet[0].getLastRow();
+  var total = ultimafila - 1;
+  
+  var rangoborrar = sheet[0].getRange(2, 1, total, 6);
+  rangoborrar.clear();
 }//Fin function: borrar
+
+function bordear(){
+  var sps = SpreadsheetApp.openById("1oDnph6_Z2FD9CvXnSMZoBItgYnj-umW4Jjr4lRahfS0");
+  var sheet = sps.getSheets();
+  var datos = sheet[0].getDataRange().getValues();
+  
+  var ultimafila = sheet[0].getLastRow();
+  var total = ultimafila - 1;
+  
+  var rangoborde = sheet[0].getRange(2, 1, total, 6);  
+  rangoborde.setBorder(true, true, true, true, true, true);  
+}//Fin function bordear
+
+function desbordear(){
+  var sps = SpreadsheetApp.openById("1oDnph6_Z2FD9CvXnSMZoBItgYnj-umW4Jjr4lRahfS0");
+  var sheet = sps.getSheets();
+  var datos = sheet[0].getDataRange().getValues();
+  
+  var ultimafila = sheet[0].getLastRow();
+  var total = ultimafila - 1;
+  
+  var rangoborde = sheet[0].getRange(2, 1, total, 6);  
+  rangoborde.setBorder(false, false, false, false, false, false);  
+}//Fin function bordear
 
 
 function onOpen() {
@@ -64,6 +90,8 @@ function onOpen() {
   ui.createMenu('Opciones avanzadas')
       .addItem('Elegir ganador', 'elegir')
       .addItem('Eliminar los concursantes', 'borrar')
+      .addItem('Bordear concursantes', 'bordear')  
+      .addItem('Quitar Bordes concursantes', 'desbordear')  
       .addToUi();
 }//Fin Function onOpen
 
